@@ -206,3 +206,4 @@
 .composition-donut .donut-total { font-size: 26px; font-weight: 600; fill: #2E2D29; font-variant-numeric: tabular-nums; }
 .composition-donut .donut-sub { font-size: 12px; font-weight: 400; fill: #898781; }
 .composition-donut .slice-label { font-size: 13px; font-weight: 600; }
+.acro { color: var(--accent); font-weight: 700; }
