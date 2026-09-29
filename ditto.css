@@ -207,3 +207,12 @@
 .composition-donut .donut-sub { font-size: 12px; font-weight: 400; fill: #898781; }
 .composition-donut .slice-label { font-size: 13px; font-weight: 600; }
 .acro { color: var(--accent); font-weight: 700; }
+
+/* ---- hero: "watch the full video" button shown when the preview pauses ---- */
+.mission-recording { position: relative; }
+.hero-continue { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); display: inline-flex; align-items: center; gap: 10px; padding: 14px 22px; border: 0; border-radius: 999px; background: rgba(255,255,255,.94); color: #2E2D29; font: inherit; font-size: 16px; font-weight: 600; cursor: pointer; box-shadow: 0 6px 24px rgba(0,0,0,.18); }
+.hero-continue:hover { background: #fff; }
+.hero-continue:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.hero-continue-icon { font-size: 13px; color: var(--accent); }
+.hero-continue-len { font-weight: 400; color: var(--muted); font-variant-numeric: tabular-nums; }
+.hero-continue[hidden] { display: none; }

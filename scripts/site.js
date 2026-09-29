@@ -115,3 +115,27 @@ if (copy) {
   addEventListener("resize", update);
   update();
 }
+
+// ---- Hero: the full supplementary video, auto-previewing only its opening. ----
+// Muted autoplay pauses at data-preview-end and offers "Watch the full video". Any sign the
+// viewer has taken over (play after the pause, seeking, unmuting, the button) disables the stop.
+{
+  const v = document.getElementById("hero-video");
+  const btn = document.querySelector(".hero-continue");
+  if (v && btn) {
+    const stopAt = parseFloat(v.dataset.previewEnd);
+    let previewing = true, autoPaused = false;
+    const takeOver = () => { previewing = false; btn.hidden = true; };
+    v.addEventListener("timeupdate", () => {
+      if (previewing && v.currentTime >= stopAt) {
+        autoPaused = true;
+        v.pause();
+        btn.hidden = false;
+      }
+    });
+    v.addEventListener("play", () => { if (autoPaused) takeOver(); });
+    v.addEventListener("seeking", () => { if (!autoPaused || v.currentTime < stopAt - 0.5) takeOver(); });
+    v.addEventListener("volumechange", () => { if (!v.muted) takeOver(); });
+    btn.addEventListener("click", () => { takeOver(); safePlay(v); });
+  }
+}
